@@ -25,8 +25,8 @@ struct Pos {
 
 impl Pos {
     fn new_random() -> Self {
-        let x = clamp(((Math::random() * 100.0) as u8), MERGIN, 100 - MERGIN);
-        let y = clamp(((Math::random() * 100.0) as u8), MERGIN, 100 - MERGIN);
+        let x = clamp((Math::random() * 100.0) as u8, MERGIN, 100 - MERGIN);
+        let y = clamp((Math::random() * 100.0) as u8, MERGIN, 100 - MERGIN);
 
         Self { x, y }
     }
@@ -139,12 +139,12 @@ impl Component for App {
                 />
                 <div class="score">{format!("Score: {}", self.score)}</div>
                 <div class="timer">{format!("Time: {:.2}", self.time)}</div>
-               <input
-                   type="button"
-                   value="restart"
-                   disabled=self.is_started || self.is_clickable
-                   onclick=self.link.callback(|_| AppMessage::Restart)
-               />
+                <input
+                    type="button"
+                    value="restart"
+                    disabled=self.is_started || self.is_clickable
+                    onclick=self.link.callback(|_| AppMessage::Restart)
+                />
             </>
         }
     }
